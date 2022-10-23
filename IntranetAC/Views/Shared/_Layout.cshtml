@@ -1,0 +1,487 @@
+﻿@using IntranetAC.Utilidades;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IntranetAC</title>
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/IntranetAC.styles.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
+    <!-- Bootstrap core CSS     -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="~/assets/css/material-dashboard.css" rel="stylesheet" />
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="~/assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="~/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/assets/css/google-roboto-300-700.css" rel="stylesheet" />
+
+</head>
+
+@*@{
+    if (User.Identity.IsAuthenticated)
+    {
+    *@
+
+<div class="wrapper">
+    <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="~/assets/img/sidebar-1.jpg">
+        <!--
+            Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+            Tip 2: you can also add an image using data-image tag
+            Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+        -->
+        <div class="logo">
+            <a href="http://www.creative-tim.com/" class="simple-text">
+                Activa Club
+            </a>
+        </div>
+        <div class="logo logo-mini">
+            <a href="http://www.creative-tim.com/" class="simple-text">
+                AC
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <div class="user">
+                <div class="photo">
+                    <img src="~/assets/img/faces/avatar.jpg" />
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                        Tania Andrew
+                        <b class="caret"></b>
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#">Mi Perfil</a>
+                            </li>
+                            <li>
+                                <a href="#">Editar Perfil</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav">
+
+                @if (User.IsInRole(DS.Role_Socio))
+                {
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="material-icons">dashboard</i>
+                            <p>Dashboard Progreso</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#tablesExamples">
+                            <i class="material-icons">book_online</i>
+                            <p>
+                                Reservación
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="tablesExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="tables/regular.html">Ver ultima reserva</a>
+                                </li>
+                                <li>
+                                    <a href="tables/extended.html">Reservar área</a>
+                                </li>
+                                <li>
+                                    <a href="tables/datatables.net.html">Historial reservas</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#mapsExamples">
+                            <i class="material-icons">card_membership</i>
+                            <p>
+                                Membresia
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="mapsExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="@Url.Action("RegistrarMembresia", "Membresia", new { Area = "Membresia" })">Registrar Membresía</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Pago", new { Area = "Membresia" })">Pagar Membresia</a>
+                                </li>
+                                <li>
+                                    <a href="maps/vector.html">historial de pagos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#menuSocio">
+                            <i class="material-icons">card_membership</i>
+                            <p>
+                                Socio
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="menuSocio">
+                            <ul class="nav">
+                                <li>
+                                    <a href="@Url.Action("RegistrarSocio", "Socio", new { Area = "Socio" })">Registrar Socio</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#menuArea">
+                            <i class="material-icons">card_membership</i>
+                            <p>
+                                Área
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="menuArea">
+                            <ul class="nav">
+                                <li>
+                                    <a href="@Url.Action("RegistrarArea", "Area", new { Area = "Area" })">Registrar Área</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="widgets.html">
+                            <i class="material-icons">youtube_searched_for</i>
+                            <p>Historial Invitados</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="widgets.html">
+                            <i class="material-icons">notifications_active</i>
+                            <p>Notificaciones</p>
+                        </a>
+                    </li>
+                }
+
+                @if (User.IsInRole(DS.Role_Admin))
+                {
+                    <li class="">
+                        <a href="dashboard.html">
+                            <i class="material-icons">line_style</i>
+                            <p>Dashboard Analytics</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" href="#formsExamples">
+                            <i class="material-icons">supervised_user_circle</i>
+                            <p>
+                                Administrador
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="formsExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="forms/regular.html">Aprobación de datos</a>
+                                </li>
+                                <li>
+                                    <a href="forms/extended.html">Aprobar Reservas</a>
+                                </li>
+                                <li>
+                                    <a href="forms/validation.html">Reporte Membresia Renovadas</a>
+                                </li>
+                                <li>
+                                    <a href="forms/wizard.html">Reporte Reservas Cerradas</a>
+                                </li>
+                                <li>
+                                    <a href="forms/wizard.html">Reporte de Socios con Deuda</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="calendar.html">
+                            <i class="material-icons">people</i>
+                            <p>Usuarios</p>
+                        </a>
+                    </li>
+
+                }
+
+                @if (User.IsInRole(DS.Role_GestorNotificacion))
+                {
+                    <li>
+                        <a data-toggle="collapse" href="#componentsExamples">
+                            <i class="material-icons">apps</i>
+                            <p>
+                                Gestion del Club
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="componentsExamples">
+                            <ul class="nav">
+                                <li>
+                                    <a href="components/buttons.html">Crear Promociones</a>
+                                </li>
+                                <li>
+                                    <a href="components/grid.html">Crear Notificaciones</a>
+                                </li>
+                                <li>
+                                    <a href="components/panels.html">Envio de Recordatorios</a>
+                                </li>
+                                <li>
+                                    <a href="components/sweet-alert.html">Membresias activas vs inactivas</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+
+                 
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/ChangePassword">
+                        <i class="material-icons">lock</i>
+                        <p>Cambio de Contraseña</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-minimize">
+                    <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                        <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                        <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                    </button>
+                </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="separator hidden-lg hidden-md"></li>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="" title="Manage">Hello @User.Identity?.Name!</a>
+                            </li>
+                            <li class="nav-item">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    @*<button type="submit" class="nav-link btn btn-link text-dark">Logout</button>*@
+                                    <button type="submit" class="btn btn-primary btn-round">
+                                        Cerrar Session
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    - IntranetAC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+
+@*
+    }
+    else
+    {*@
+
+@*  <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="~/dashboard.html">Material Dashboard Pro</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                        <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+        <div class="wrapper wrapper-full-page">
+            <div class="full-page login-page" filter-color="black" data-image="~/~/assets/img/login.jpg">
+                <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container">
+                        <nav class="pull-left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Company
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Portfolio
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Blog
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <p class="copyright pull-right">
+                            &copy;
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
+                            <a href="http://www.creative-tim.com/">Creative Tim</a>, made with love for a better web
+                        </p>
+                    </div>
+                </footer>
+            </div>
+        </div>*@
+
+
+@*   }
+}
+
+*@
+
+@*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>*@
+@*<script src="https://kit.fontawesome.com/e19c476714.js"></script>*@
+
+
+@*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+<script src="~/js/site.js" asp-append-version="true"></script>
+<!--   Core JS Files   -->
+<script src="~/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="~/assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="~/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/assets/js/material.min.js" type="text/javascript"></script>
+<script src="~/assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<!-- Forms Validations Plugin -->
+<script src="~/assets/js/jquery.validate.min.js"></script>
+<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+<script src="~/assets/js/moment.min.js"></script>
+<!--  Charts Plugin -->
+<script src="~/assets/js/chartist.min.js"></script>
+<!--  Plugin for the Wizard -->
+<script src="~/assets/js/jquery.bootstrap-wizard.js"></script>
+<!--  Notifications Plugin    -->
+<script src="~/assets/js/bootstrap-notify.js"></script>
+<!--   Sharrre Library    -->
+<script src="~/assets/js/jquery.sharrre.js"></script>
+<!-- DateTimePicker Plugin -->
+<script src="~/assets/js/bootstrap-datetimepicker.js"></script>
+<!-- Vector Map plugin -->
+<script src="~/assets/js/jquery-jvectormap.js"></script>
+<!-- Sliders Plugin -->
+<script src="~/assets/js/nouislider.min.js"></script>
+<!--  Google Maps Plugin    -->
+<!--<script src="~/assets/js/jquery.select-bootstrap.js"></script>-->
+<!-- Select Plugin -->
+<script src="~/assets/js/jquery.select-bootstrap.js"></script>
+<!--  DataTables.net Plugin    -->
+<script src="~/assets/js/jquery.datatables.js"></script>
+<!-- Sweet Alert 2 plugin -->
+<script src="~/assets/js/sweetalert2.js"></script>
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="~/assets/js/jasny-bootstrap.min.js"></script>
+<!--  Full Calendar Plugin    -->
+<script src="~/assets/js/fullcalendar.min.js"></script>
+<!-- TagsInput Plugin -->
+<script src="~/assets/js/jquery.tagsinput.js"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="~/assets/js/material-dashboard.js"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="~/assets/js/demo.js"></script>
+<script type="text/javascript">
+    $().ready(function() {
+        demo.checkFullPageBackgroundImage();
+         demo.initDashboardPageCharts();
+        demo.initCharts();
+        setTimeout(function() {
+            // after 1000 ms we add the class animated to the login/register card
+            $('.card').removeClass('card-hidden');
+        }, 700)
+    });
+</script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+
+
+</html>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IntranetAC.Modelos.MembresiaSocio>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th></th>
+            <th>Nombre Socio</th>
+            <th>Fecha Registro</th>
+            <th>Fecha Alta</th>
+            <th>Fecha Baja</th>
+            <th>Estado</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(IntranetAC.Modelos.MembresiaSocio item in Model){
+            <tr>
+                <td class="text-center">@Html.DisplayFor(x => item.MembresiaId)</td>
+                <td>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="optionsCheckboxes">
+                            <input type="hidden" name="membresiaID" value="@Html.DisplayFor(x => item.MembresiaId)" />
+                        </label>
+                    </div>
+                </td>
+                <td>@Html.DisplayFor(x => item.SocioNombre)</td>
+                <td>@Html.DisplayFor(x => item.FechaRegistro)</td>
+                @if (item.MembresiaEstado == 1)
+                {
+                    <td>@Html.DisplayFor(x => item.FechaAlta)</td>
+                }else{
+                    <td></td>
+                }
+                @if (item.MembresiaEstado == 2)
+                {
+                    <td>@Html.DisplayFor(x => item.FechaBaja)</td>
+                }else{
+                    <td></td>
+                }
+                <td>
+                    @if(item.MembresiaEstado == 1){
+                        <span class="badge badge-success">@Html.DisplayFor(x => item.MembresiaEstadoDesc)</span>
+                    }else{
+                        <span class="badge badge-danger">@Html.DisplayFor(x => item.MembresiaEstadoDesc)</span>
+                    }
+                </td>
+                <td class="td-actions text-center">
+                    <button type="button" rel="tooltip" class="btn btn-info">
+                        <i class="material-icons">person</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-success">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger" onclick="darDeBaja(this);" title="Dar de baja a @Html.DisplayFor(x => item.SocioNombre)">
+                        <i class="material-icons">close</i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

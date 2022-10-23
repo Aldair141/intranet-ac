@@ -1,0 +1,172 @@
+﻿@model IEnumerable<IntranetAC.Modelos.MembresiaSocio>
+@{
+    ViewData["Title"] = "Registrar Membresía";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .badge-success {
+        background-color: #4caf50;
+    }
+
+    .badge-danger {
+        background-color: #f44336;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        const rutaSocio = '@Url.Action("BuscarSocio")';
+        const rutaGuardarMembresia = '@Url.Action("Insert")';
+        const rutaListaMiembros = '@Url.Action("ListarMiembros")';
+        const rutaDarDeBaja = '@Url.Action("DarDeBaja")';
+
+        function buscarSocio(event){
+            if(event.keyCode == 13){
+                const codSocio = $("#txtnumsocio").val();
+                $.ajax({
+                    type: 'GET',
+                    url: rutaSocio,
+                    data: {
+                        SocioID: codSocio
+                    },
+                    dataType: 'json',
+                    contentType: 'application/json;charset=utf-8',
+                    success: function(response) {
+                        const datosSocio = response;
+                        $("#txtnombres").val(datosSocio.socioNombre);
+                        $("#txtapellidopaterno").val(datosSocio.socioApellidoPaterno);
+                        $("#txtapellidomaterno").val(datosSocio.socioApellidoMaterno);
+                        $("#txtsocioid").val(datosSocio.socioId);
+
+                        $("#txtapellidopaterno, #txtapellidomaterno, #txtnombres").parent().removeClass("is-empty");
+                    }
+                });
+            }
+        }
+
+        function registrarComoMiembro(){
+            const codSocio = $("#txtsocioid").val();
+            if (codSocio.toString().trim().length === 0) {
+                return;
+            }
+
+            if (codSocio.toString() == '0') {
+                return;
+            }
+
+            if(confirm("¿Desea registrar a este socio como miembro?")){
+                $.ajax({
+                    type: 'POST',
+                    url: rutaGuardarMembresia,
+                    data: JSON.stringify({
+                        SocioId: codSocio
+                    }),
+                    dataType: 'json',
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (response) {
+                        const rpta = response;
+                        if(rpta.ok){
+                            alert(rpta.message);
+                        }
+                    }
+                });
+            }
+        }
+
+        function obtenerListaMiembros(){
+            $.ajax({
+                type: 'GET',
+                url: rutaListaMiembros,
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        function darDeBaja(button) {
+            if(!confirm("¿Está seguro que desea dar de baja a esta membresía?")){
+                return;
+            }
+
+            const membresiaID = $(button).parent().parent().find("input[name='membresiaID']").val();
+
+            $.ajax({
+                type: 'DELETE',
+                url: rutaDarDeBaja,
+                data: JSON.stringify({
+                    MembresiaId: membresiaID
+                }),
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (response) {
+                    const rpta = response;
+                    if (rpta.ok) {
+                        alert(rpta.message);
+                    }
+                }
+            });
+        }
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                <form method="#" action="#">
+                    <input type="hidden" id="txtsocioid" />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Socio</label>
+                                    <input type="text" id="txtnumsocio" onkeyup="buscarSocio(event)" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Nombres</label>
+                                <input id="txtnombres" readonly="readonly" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Apellido Paterno</label>
+                                    <input id="txtapellidopaterno" readonly="readonly" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Apellido Materno</label>
+                                    <input id="txtapellidomaterno" readonly="readonly" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                        <button type="button" onclick="registrarComoMiembro()" class="btn btn-fill btn-rose">Registrar como miembro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            <h4 class="card-title">Lista de miembros</h4>
+            <div class="card-content">
+                <div class="table-responsive">
+                    @Html.Partial("_ListaMiembros", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

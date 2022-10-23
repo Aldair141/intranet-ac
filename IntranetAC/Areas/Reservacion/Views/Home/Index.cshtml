@@ -1,0 +1,352 @@
+﻿@using IntranetAC.Utilidades;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (User.IsInRole(DS.Role_Socio))
+                {
+                    <div class="content">
+                <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">weekend</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Tiempo en Dias</p>
+                                    <h3 class="card-title">184</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">warning</i>
+                                        <a href="#pablo">Tiempo para terminar la membresia...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="rose">
+                                    <i class="material-icons">equalizer</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Visitas al Club</p>
+                                    <h3 class="card-title">75</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">local_offer</i> Socio Recurrente
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="green">
+                                    <i class="material-icons">store</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Total de Deuda</p>
+                                    <h3 class="card-title">$34,245</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">date_range</i> Hasta la fecha actual
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="blue">
+                                    <i class="fa fa-twitter"></i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Notificaciones</p>
+                                    <h3 class="card-title">+245</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">update</i> Notificaciones sin leer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="green">
+                                    <i class="material-icons">language</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Movimiento de pagos de membresia</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive table-sales">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                1
+                                                            </td>
+                                                            <td>Julio</td>
+                                                           
+                                                            <td class="text-right">
+                                                               
+                                                            </td>
+                                                            <td class="text-right">
+                                                                $1.500
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                2
+                                                            </td>
+                                                            <td>Junio</td>
+                                                            <td class="text-right">
+                                                                
+                                                            </td>
+                                                            <td class="text-right">
+                                                                 $1.300
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                3
+                                                            </td>
+                                                            <td>Mayo</td>
+                                                            <td class="text-right">
+                                                                
+                                                            </td>
+                                                            <td class="text-right">
+                                                                $800
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                               4
+                                                            </td>
+                                                            <td>Abril</td>
+                                                            <td class="text-right">
+                                                               
+                                                            </td>
+                                                            <td class="text-right">
+                                                               $250
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                5
+                                                            </td>
+                                                            <td>Marzo</td>
+                                                            <td class="text-right">
+                                                                
+                                                            </td>
+                                                            <td class="text-right">
+                                                                $1.200
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                               6
+                                                            </td>
+                                                            <td>Febrero</td>
+                                                            <td class="text-right">
+                                                                
+                                                            </td>
+                                                            <td class="text-right">
+                                                               $1.800
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                           <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="red">
+                                    <i class="material-icons">pie_chart</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Areas Recreactivas mas usadas</h4>
+                                </div>
+                                <div id="chartPreferences" class="ct-chart"></div>
+                                <div class="card-footer">
+                                    <h6>Legend</h6>
+                                    <i class="fa fa-circle text-info"></i> Piscina
+                                    <i class="fa fa-circle text-warning"></i> Cancha de Futbol
+                                    <i class="fa fa-circle text-danger"></i> Tenis de Mesa
+                                    <i class="fa fa-circle text-success"></i> Basketball                                                                       
+                                    <i class="fa fa-circle text-primary"></i> Cancha de Vóley
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header" data-background-color="rose" data-header-animation="true">
+                                    <div class="ct-chart" id="websiteViewsChart"></div>
+                                </div>
+                                <div class="card-content">
+                                    
+                                    <h4 class="card-title">Reservas mensuales en el club </h4>
+                                    <p class="category">Incluye los invitados</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> actualizado hace 2 dias
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header" data-background-color="green" data-header-animation="true">
+                                    <div class="ct-chart" id="dailySalesChart"></div>
+                                </div>
+                                <div class="card-content">                                   
+                                    <h4 class="card-title">Reservas Diaras</h4>
+                                    <p class="category">
+                                        <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> Incremento en dias.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> actualizado hace 4 minutos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header" data-background-color="blue" data-header-animation="true">
+                                    <div class="ct-chart" id="completedTasksChart"></div>
+                                </div>
+                                <div class="card-content">                                    
+                                    <h4 class="card-title">Ranking de Areas</h4>
+                                    <p class="category">Areas mas visitadas por los socios</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> Actualizado hace 3 minutos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+                }
+
+@if (User.IsInRole(DS.Role_Admin))
+{
+    <div class="content">
+                <div class="container-fluid">                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header" data-background-color="blue">
+                                    <div id="simpleBarChart" class="ct-chart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Cantidad de Clientes Registrados</h4>
+                                    <p class="category">Mensual</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="card card-chart">
+                                <div class="card-header" data-background-color="green">
+                                    <div id="simpleBarChart2" class="ct-chart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Cantidad de Servicios Reservados</h4>
+                                    <p class="category">Mensual</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-chart">
+                                <div class="card-header" data-background-color="rose">
+                                    <div id="simpleBarChart3" class="ct-chart"></div>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Cantidad de Membresías Renovadas</h4>
+                                    <p class="category">Mensual</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="blue">
+                                    <i class="material-icons">timeline</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Porcentaje de actividad de los usuario en la aplicación                                       
+                                    </h4>
+                                </div>
+                                <div id="colouredRoundedLineChart" class="ct-chart"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="rose">
+                                    <i class="material-icons">insert_chart</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Renovación de Membresias - Rojo(sin sistema) Celeste (Con Sistema)                                       
+                                    </h4>
+                                </div>
+                                <div id="multipleBarsChart" class="ct-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="blue">
+                                    <i class="material-icons">timeline</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Porcentaje de Incremento en la retención de clientes
+                                        <small> - Celeste(con Sistema) Rojo(sin Sistema)</small>
+                                    </h4>
+                                </div>
+                                <div id="colouredBarsChart" class="ct-chart"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="red">
+                                    <i class="material-icons">pie_chart</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Porcentaje de Renovaciones</h4>
+                                </div>
+                                <div id="chartPreferences2" class="ct-chart"></div>
+                                <div class="card-footer">
+                                    <h6>Leyenda</h6>
+                                    <i class="fa fa-circle text-info"></i> Renovación Renovadas
+                                    <i class="fa fa-circle text-warning"></i> Renovaciones Vencidas
+                                    <i class="fa fa-circle text-danger"></i> Renovaciones Pendientes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+
+
+

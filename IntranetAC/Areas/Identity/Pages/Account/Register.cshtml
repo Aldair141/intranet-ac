@@ -1,0 +1,292 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@*<h2>@ViewData["Title"]</h2>*@
+<!-- Bootstrap core CSS     -->
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+<!--  Material Dashboard CSS    -->
+<link href="../../assets/css/material-dashboard.css" rel="stylesheet" />
+<!--  CSS for Demo Purpose, don't include it in your project     -->
+<link href="../../assets/css/demo.css" rel="stylesheet" />
+<!--     Fonts and icons     -->
+<link href="../../assets/css/font-awesome.css" rel="stylesheet" />
+<link href="../../assets/css/google-roboto-300-700.css" rel="stylesheet" />
+
+<nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../dashboard.html">Material Dashboard Pro</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<div class="wrapper wrapper-full-page">
+    <div class="full-page register-page" filter-color="black" data-image="../../assets/img/register.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="card card-signup">
+                        <h2 class="card-title text-center">Register</h2>
+                        <div class="row">
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="card-content">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-rose">
+                                            <i class="material-icons">timeline</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Marketing</h4>
+                                            <p class="description">
+                                                We've created the marketing campaign of the website. It was a very interesting collaboration.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-primary">
+                                            <i class="material-icons">code</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Fully Coded in HTML5</h4>
+                                            <p class="description">
+                                                We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-info">
+                                            <i class="material-icons">group</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Built Audience</h4>
+                                            <p class="description">
+                                                There is also a Fully Customizable CMS Admin Dashboard for this product.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="social text-center">
+                                    <button class="btn btn-just-icon btn-round btn-twitter">
+                                        <i class="fa fa-twitter"></i>
+                                    </button>
+                                    <button class="btn btn-just-icon btn-round btn-dribbble">
+                                        <i class="fa fa-dribbble"></i>
+                                    </button>
+                                    <button class="btn btn-just-icon btn-round btn-facebook">
+                                        <i class="fa fa-facebook"> </i>
+                                    </button>
+                                    <h4> or be classical </h4>
+                                </div>
+                                 <div asp-validation-summary="All" class="text-danger"></div>
+                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                    <div class="card-content">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">face</i>
+                                            </span>                                            
+                                            <input asp-for="Input.CodSocio" class="form-control" placeholder="Código Socio..." />
+                                            <span asp-validation-for="Input.CodSocio" class="text-danger"></span>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>                                            
+                                            <input asp-for="Input.Email" class="form-control" placeholder="Email..." />
+                                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>                                            
+                                            <input asp-for="Input.Password" placeholder="Password..." class="form-control" />
+                                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                        </div>
+                                         <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock_outline</i>
+                                            </span>                                                                                         
+                                            <input asp-for="Input.ConfirmPassword" placeholder="Confirmar Password..." class="form-control"/>
+                                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                        <!-- If you want to add a checkbox to this form, uncomment this code -->
+@*                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="optionsCheckboxes" checked> I agree to the
+                                                <a href="#something">terms and conditions</a>.
+                                            </label>
+                                        </div>*@
+                                    </div>
+                                    <div class="footer text-center">
+                                        <button type="submit" class="btn btn-primary btn-round">Register</button>                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="http://www.creative-tim.com/">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Register</button>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+    <!--   Core JS Files   -->
+    <script src="../../assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/material.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="../../assets/js/jquery.validate.min.js"></script>
+    <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="../../assets/js/moment.min.js"></script>
+    <!--  Charts Plugin -->
+    <script src="../../assets/js/chartist.min.js"></script>
+    <!--  Plugin for the Wizard -->
+    <script src="../../assets/js/jquery.bootstrap-wizard.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../../assets/js/bootstrap-notify.js"></script>
+    <!--   Sharrre Library    -->
+    <script src="../../assets/js/jquery.sharrre.js"></script>
+    <!-- DateTimePicker Plugin -->
+    <script src="../../assets/js/bootstrap-datetimepicker.js"></script>
+    <!-- Vector Map plugin -->
+    <script src="../../assets/js/jquery-jvectormap.js"></script>
+    <!-- Sliders Plugin -->
+    <script src="../../assets/js/nouislider.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+    <!-- Select Plugin -->
+    <script src="../../assets/js/jquery.select-bootstrap.js"></script>
+    <!--  DataTables.net Plugin    -->
+    <script src="../../assets/js/jquery.datatables.js"></script>
+    <!-- Sweet Alert 2 plugin -->
+    <script src="../../assets/js/sweetalert2.js"></script>
+    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+    <script src="../../assets/js/jasny-bootstrap.min.js"></script>
+    <!--  Full Calendar Plugin    -->
+    <script src="../../assets/js/fullcalendar.min.js"></script>
+    <!-- TagsInput Plugin -->
+    <script src="../../assets/js/jquery.tagsinput.js"></script>
+    <!-- Material Dashboard javascript methods -->
+    <script src="../../assets/js/material-dashboard.js"></script>
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../../assets/js/demo.js"></script>
+    <script type="text/javascript">
+        $().ready(function() {
+            demo.checkFullPageBackgroundImage();
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.card').removeClass('card-hidden');
+            }, 700)
+        });
+    </script>
