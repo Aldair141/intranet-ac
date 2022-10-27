@@ -17,5 +17,12 @@ namespace IntranetAC.AccesoDatos.Repositorio
         {
             _db = db;
         }
+
+        public Socio ObtenerSocioPorDocumento(string documento)
+        {
+            //Socio socio = _db.Socio.Where(x => x.SocioNumeroDocumento.Equals(documento)).First();
+            Socio socio = _db.Socio.FirstOrDefault(x => x.SocioNumeroDocumento.Equals(documento));
+            return socio;
+        }
     }
 }

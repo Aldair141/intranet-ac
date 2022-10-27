@@ -15,6 +15,8 @@ namespace IntranetAC.AccesoDatos.Repositorio
         public ITipoDocumentoRepository TipoDocumento { get; private set; }
         public ISocioRepositorio Socio { get; private set; }
         public IMembresiaRepositorio Membresia { get; private set; }
+        public ITipoPagoRepositorio TipoPago { get; private set; }
+        public IPagoRepositorio Pago { get; private set; }
         
 
         public UnidadTrabajo(ApplicationDbContext db)
@@ -24,6 +26,8 @@ namespace IntranetAC.AccesoDatos.Repositorio
             TipoDocumento = new TipoDocumentoRepositorio(_db);
             Socio = new SocioRepositorio(_db);
             Membresia = new MembresiaRepositorio(_db);
+            TipoPago = new TipoPagoRepositorio(_db);
+            Pago = new PagoRepositorio(_db);
         }
 
 

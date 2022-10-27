@@ -1,0 +1,26 @@
+﻿@model IEnumerable<IntranetAC.Modelos.PagoGrillaReporte>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th>Nombre Socio</th>
+            <th>Fecha Registro</th>
+            <th>Monto Cancela</th>
+            <th>Monto Recibido</th>
+            <th>Vuelto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (IntranetAC.Modelos.PagoGrillaReporte item in Model)
+        {
+            <tr>
+                <td class="text-center">@Html.DisplayFor(x => item.PagoId)</td>
+                <td>@Html.DisplayFor(x => item.SocioNombreCompleto)</td>
+                <td>@Html.DisplayFor(x => item.FechaRegistro)</td>
+                <td>@Html.DisplayFor(x => item.MontoCancela)</td>
+                <td>@Html.DisplayFor(x => item.MontoRecibido)</td>
+                <td>@Html.DisplayFor(x => item.Vuelto)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -87,3 +87,47 @@ go
 
 alter table dbo.Area add constraint pk_area_estado foreign key (AreaEstadoId) references dbo.AreaEstado (AreaEstadoId)
 go
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+create table dbo.TipoPago
+(
+	TipoPagoId int identity(1,1),
+	TipoPagoDesc varchar(50)
+)
+go
+
+insert into TipoPago values ('Pago membresía'), ('Pago matrícula'), ('Pago reserva')
+go
+
+alter table dbo.TipoPago add constraint pk_tipo_pago primary key (TipoPagoId)
+go
+
+select * from TipoPago
+go
+
+create table dbo.Pago
+(
+	PagoId int identity(1,1),
+	TipoPagoId int,
+	SocioId int,
+	FechaRegistro datetime,
+	MontoCancela money,
+	MontoRecibido money,
+	Vuelto money
+)
+go
+
+alter table dbo.Pago add constraint pk_pago primary key (PagoId)
+go
+
+alter table dbo.Pago add constraint fk_pago_tipo foreign key (TipoPagoId) references TipoPago (TipoPagoId)
+go
+
+alter table dbo.Pago add constraint fk_pago_socio foreign key (SocioId) references Socio (SocioId)
+go
+
+
+select * from Socio
+
+select * from Pago

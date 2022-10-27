@@ -1,7 +1,98 @@
-﻿
+﻿@model IntranetAC.Areas.Membresia.Models.PagoModel
 @{
     ViewData["Title"] = "Pagar Membresía";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pagar Membresia</h2>
+@section Scripts {
+    <script>
+        let urlBuscarSocio = '@Url.Action("GetSocioPorDocumento", "Pago")';
+        $("input[name='txtdni']").keyup(function(e){
+            let code = e.keyCode;
+            if(code == 13){
+                let nroDocumento = $("input[name='txtdni']").val();
+
+                if( nroDocumento.toString().trim().length < 8 ){
+                    return;
+                }
+
+                let parametros = {
+                    documento: nroDocumento
+                };
+
+                $.ajax({
+                    type: 'GET',
+                    data: parametros,
+                    url: urlBuscarSocio,
+                    dataType: 'json',
+                    contentType: 'application/json;charset=utf-8',
+                    success: function(response){
+                        let nombreCompleto = `${response.socioNombre} ${response.socioApellidoPaterno} ${response.socioApellidoMaterno}`;
+                        $("input[name='txtnombre']").val(nombreCompleto);
+                        $("input[name='SocioId']").val(response.socioId);
+                    }
+                });
+            }
+        });
+
+        $("button").click(function(){
+            $("#frmRegistrar").submit();
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                @using (Html.BeginForm("Insert", "Pago", FormMethod.Post, new { @id = "frmRegistrar" }))
+                {
+                    <div class="form-group label-floating">
+                        @Html.HiddenFor(x => x.SocioId)
+                        <label class="control-label">Socio</label>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="text" name="txtdni" class="form-control" maxlength="20" placeholder="N° Documento">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input type="text" name="txtnombre" class="form-control" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Tipo Pago</label>
+                        @Html.DropDownListFor(x => x.TipoPagoId, Model.TipoPago.Select(td => new SelectListItem(){
+                            Text = td.TipoPagoDesc.ToString(),
+                            Value = td.TipoPagoId.ToString(),
+                            Selected = td.TipoPagoId == Model.TipoPagoId
+                        }), new { @class = "selectpicker", @title = "::SELECCIONE::", @data_style="select-with-transition", @data_size=Model.TipoPago.Count.ToString() })
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Monto Cancela</label>
+                        @Html.TextBoxFor(x => x.MontoCancela, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Monto Recibido</label>
+                        @Html.TextBoxFor(x => x.MontoRecibido, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Monto Vuelto</label>
+                        @Html.TextBoxFor(x => x.Vuelto, new { @class = "form-control" })
+                    </div>
+
+                    <button type="button" class="btn btn-fill btn-rose">Registrar Socio</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

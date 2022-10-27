@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace IntranetAC.AccesoDatos.Repositorio.IRepositorio
 {
-    public interface ISocioRepositorio : IRepositorio<Socio>
+    public interface ITipoPagoRepositorio : IRepositorio<TipoPago>
     {
-        Socio ObtenerSocioPorDocumento(string documento);
     }
 }

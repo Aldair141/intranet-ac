@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Membresia\Data\**" />
+    <Compile Remove="Areas\Socio\Data\**" />
+    <Content Remove="Areas\Membresia\Data\**" />
+    <Content Remove="Areas\Socio\Data\**" />
+    <EmbeddedResource Remove="Areas\Membresia\Data\**" />
+    <EmbeddedResource Remove="Areas\Socio\Data\**" />
+    <None Remove="Areas\Membresia\Data\**" />
+    <None Remove="Areas\Socio\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
@@ -29,8 +40,6 @@
   <ItemGroup>
     <Folder Include="Areas\Area\Data\" />
     <Folder Include="Areas\Area\Models\" />
-    <Folder Include="Areas\Membresia\Data\" />
-    <Folder Include="Areas\Socio\Data\" />
   </ItemGroup>
 
 </Project>

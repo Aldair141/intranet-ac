@@ -12,6 +12,9 @@ namespace IntranetAC.AccesoDatos.Repositorio.IRepositorio
         ITipoDocumentoRepository TipoDocumento { get; }
         ISocioRepositorio Socio { get; }
         IMembresiaRepositorio Membresia { get; }
+        ITipoPagoRepositorio TipoPago { get; }
+        IPagoRepositorio Pago { get; }
+
 
         void Guardad();
     }
