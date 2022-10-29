@@ -21,6 +21,7 @@ namespace IntranetAC.AccesoDatos.Repositorio
         public IAreaRepositorio Area { get; private set; }
         public IUnidadLongitudRepositorio UnidadLongitud { get; private set; }
         public IReservaRepositorio Reserva { get; private set; }
+        public IInvitadoRepositorio Invitado { get; private set; }
 
         public UnidadTrabajo(ApplicationDbContext db)
         {
@@ -35,6 +36,7 @@ namespace IntranetAC.AccesoDatos.Repositorio
             Area = new AreaRepositorio(_db);
             UnidadLongitud = new UnidadLongitudRepositorio(_db);
             Reserva = new ReservaRepositorio(_db);
+            Invitado = new InvitadoRepositorio(_db);
         }
 
 

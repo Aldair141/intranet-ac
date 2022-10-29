@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace IntranetAC.AccesoDatos.Repositorio.IRepositorio
 {
-    public interface IReservaRepositorio : IRepositorio<Reserva>
+    public interface IInvitadoRepositorio : IRepositorio<Invitado>
     {
-        IEnumerable<ReservaGrillaReporte> ObtenerReservaReporte();
+        IEnumerable<Invitado> ObtenerInvitadosPorReserva(int reservaid);
     }
 }

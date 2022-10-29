@@ -23,5 +23,6 @@ namespace IntranetAC.AccesoDatos.Data
         public DbSet<Area> Area { get; set; }
         public DbSet<UnidadLongitud> UnidadLongitud { get; set; }
         public DbSet<Reserva> Reserva { get; set; }
+        public DbSet<Invitado> Invitado { get; set; }
     }
 }

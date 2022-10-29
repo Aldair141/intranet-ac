@@ -18,7 +18,7 @@ namespace IntranetAC.AccesoDatos.Repositorio.IRepositorio
         IAreaRepositorio Area { get; }
         IUnidadLongitudRepositorio UnidadLongitud { get; }
         IReservaRepositorio Reserva { get; }
-
+        IInvitadoRepositorio Invitado { get; }
         void Guardad();
     }
 }

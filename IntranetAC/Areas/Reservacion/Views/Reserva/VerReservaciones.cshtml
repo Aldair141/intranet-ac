@@ -1,0 +1,62 @@
+﻿@model List<IntranetAC.Areas.Reservacion.Model.ReservaModel>
+@{
+    ViewData["Title"] = "Ver Reservaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script>
+        const rutaInvitados = '@Url.Action("InvitadosReserva", "Reserva")';
+        function abrirModalInvitados(button){
+            const reservaID = $(button).parent().parent().find("input[type='hidden']").val();
+            $.ajax({
+                type: 'GET',
+                url: rutaInvitados,
+                data: {
+                    reservaID: reservaID
+                },
+                contentType: 'application/json;charset=utf-8',
+                success: function (response) {
+                    $("#modalInvitados .modal-body").html(response);
+                    $("#modalInvitados").modal("show");
+                }
+            });
+        }
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                <div class="table-responsive">
+                    @Html.Partial("_GrillaReservas.cshtml", Model)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalInvitados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

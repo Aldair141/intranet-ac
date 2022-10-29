@@ -16,7 +16,22 @@ namespace IntranetAC.Areas.Reservacion.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var reservasBD = _db.Reserva.ObtenerReservaReporte();
+            List<ReservaModel> lstReservas = new List<ReservaModel>();
+            foreach (var reserva in reservasBD)
+            {
+                lstReservas.Add(new ReservaModel
+                {
+                    AreaId = reserva.AreaId,
+                    AreaDescripcion = reserva.objArea.AreaDescripcion,
+                    SocioId = reserva.SocioId,
+                    SocioNombre = $"{ reserva.objSocio.SocioNombre } { reserva.objSocio.SocioApellidoPaterno } { reserva.objSocio.SocioApellidoMaterno }",
+                    EstadoReserva = reserva.EstadoReserva,
+                    FechaRegistro = reserva.FechaRegistro,
+                    ReservaId = reserva.ReservaId,
+                });
+            }
+            return View("~/Areas/Reservacion/Views/Reserva/VerReservaciones.cshtml", lstReservas);
         }
 
         public IActionResult GenerarReserva()
@@ -64,6 +79,13 @@ namespace IntranetAC.Areas.Reservacion.Controllers
             _db.Guardad();
 
             return RedirectToAction("GenerarReserva");
+        }
+
+        [HttpGet]
+        public IActionResult InvitadosReserva(int reservaID)
+        {
+            var invitados = _db.Invitado.ObtenerInvitadosPorReserva(reservaID);
+            return PartialView("~/Areas/Reservacion/Views/Reserva/_Invitados.cshtml", invitados);
         }
     }
 }

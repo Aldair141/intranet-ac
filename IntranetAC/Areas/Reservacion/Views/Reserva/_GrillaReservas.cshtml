@@ -1,0 +1,39 @@
+﻿@model List<IntranetAC.Areas.Reservacion.Model.ReservaModel>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">#</th>
+            <th>Nombre Socio</th>
+            <th>Área</th>
+            <th>Fecha Registro</th>
+            <th>Estado Reserva</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (IntranetAC.Areas.Reservacion.Model.ReservaModel item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(x => item.ReservaId)
+                    @Html.HiddenFor(x => item.ReservaId)    
+                </td>
+                <td>@Html.DisplayFor(x => item.SocioNombre)</td>
+                <td>@Html.DisplayFor(x => item.AreaDescripcion)</td>
+                <td>@Html.DisplayFor(x => item.FechaRegistro)</td>
+                <td>@Html.DisplayFor(x => item.EstadoReserva)</td>
+                <td class="td-actions text-center">
+                    <button type="button" rel="tooltip" class="btn btn-info" onclick="abrirModalInvitados(this)" title="Administrar Invitados">
+                        <i class="material-icons">person</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-success">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" rel="tooltip" class="btn btn-danger" onclick="darDeBaja(this);" title="Dar de baja a mi">
+                        <i class="material-icons">close</i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
