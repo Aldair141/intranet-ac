@@ -8,6 +8,9 @@ namespace IntranetAC.Areas.Socio.Models
         {
             this.TipoDocumento = new List<TipoDocumentoModel>();
         }
+
+        public int SocioId { get; set; }
+
         [Display(Name = "Nombre")]
         [Required]
         public string SocioNombre { get; set; }

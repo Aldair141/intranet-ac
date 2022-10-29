@@ -1,0 +1,39 @@
+﻿@model IntranetAC.Areas.Reservacion.Model.ReservaModel
+@{
+    ViewData["Title"] = "Generar Reserva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">mail_outline</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">@ViewData["Title"]</h4>
+                @using (Html.BeginForm("Insert", "Reserva", FormMethod.Post, new { @id = "frmRegistrar" }))
+                {
+                    <div class="form-group label-floating">
+                        <label class="control-label">Socio</label>
+                        @Html.DropDownListFor(x => x.SocioId, Model.Socios.Select(td => new SelectListItem(){
+                            Text = td.SocioNombre + " " + td.SocioApellidoPaterno + " " + td.SocioApellidoMaterno,
+                            Value = td.SocioId.ToString(),
+                            Selected = td.SocioId == Model.SocioId
+                        }), new { @class = "selectpicker", @title = "::SELECCIONE::", @data_style="select-with-transition", @data_size=Model.Socios.Count.ToString() })
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Area</label>
+                        @Html.DropDownListFor(x => x.AreaId, Model.Areas.Select(td => new SelectListItem(){
+                            Text = td.AreaDescripcion,
+                            Value = td.AreaId.ToString(),
+                            Selected = td.AreaId == Model.AreaId
+                        }), new { @class = "selectpicker", @title = "::SELECCIONE::", @data_style="select-with-transition", @data_size=Model.Areas.Count.ToString() })
+                    </div>
+
+                    <button type="submit" class="btn btn-fill btn-rose">Registrar Reservación</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
