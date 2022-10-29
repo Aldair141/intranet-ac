@@ -131,3 +131,4 @@ go
 select * from Socio
 
 select * from Pago
+

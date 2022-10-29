@@ -8,12 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Area\Data\**" />
+    <Compile Remove="Areas\Area\Models\**" />
     <Compile Remove="Areas\Membresia\Data\**" />
     <Compile Remove="Areas\Socio\Data\**" />
+    <Content Remove="Areas\Area\Data\**" />
+    <Content Remove="Areas\Area\Models\**" />
     <Content Remove="Areas\Membresia\Data\**" />
     <Content Remove="Areas\Socio\Data\**" />
+    <EmbeddedResource Remove="Areas\Area\Data\**" />
+    <EmbeddedResource Remove="Areas\Area\Models\**" />
     <EmbeddedResource Remove="Areas\Membresia\Data\**" />
     <EmbeddedResource Remove="Areas\Socio\Data\**" />
+    <None Remove="Areas\Area\Data\**" />
+    <None Remove="Areas\Area\Models\**" />
     <None Remove="Areas\Membresia\Data\**" />
     <None Remove="Areas\Socio\Data\**" />
   </ItemGroup>
@@ -35,11 +43,6 @@
     <ProjectReference Include="..\IntranetAC.AccesoDatos\IntranetAC.AccesoDatos.csproj" />
     <ProjectReference Include="..\IntranetAC.Modelos\IntranetAC.Modelos.csproj" />
     <ProjectReference Include="..\IntranetAC.Utilidades\IntranetAC.Utilidades.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Area\Data\" />
-    <Folder Include="Areas\Area\Models\" />
   </ItemGroup>
 
 </Project>

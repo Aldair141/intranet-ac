@@ -19,6 +19,8 @@ namespace IntranetAC.AccesoDatos.Data
         public DbSet<MembresiaEstado> MembresiaEstado { get; set; }
         public DbSet<TipoPago> TipoPago { get; set; }
         public DbSet<Pago> Pago { get; set; }
-
+        public DbSet<AreaEstado> AreaEstado { get; set; }
+        public DbSet<Area> Area { get; set; }
+        public DbSet<UnidadLongitud> UnidadLongitud { get; set; }
     }
 }

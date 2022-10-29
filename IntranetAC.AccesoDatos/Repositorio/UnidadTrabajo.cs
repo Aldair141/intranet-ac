@@ -17,7 +17,9 @@ namespace IntranetAC.AccesoDatos.Repositorio
         public IMembresiaRepositorio Membresia { get; private set; }
         public ITipoPagoRepositorio TipoPago { get; private set; }
         public IPagoRepositorio Pago { get; private set; }
-        
+        public IAreaEstadoRepositorio AreaEstado { get; private set; }
+        public IAreaRepositorio Area { get; private set; }
+        public IUnidadLongitudRepositorio UnidadLongitud { get; private set; }
 
         public UnidadTrabajo(ApplicationDbContext db)
         {
@@ -28,6 +30,9 @@ namespace IntranetAC.AccesoDatos.Repositorio
             Membresia = new MembresiaRepositorio(_db);
             TipoPago = new TipoPagoRepositorio(_db);
             Pago = new PagoRepositorio(_db);
+            AreaEstado = new AreaEstadoRepositorio(_db);
+            Area = new AreaRepositorio(_db);
+            UnidadLongitud = new UnidadLongitudRepositorio(_db);
         }
 
 
